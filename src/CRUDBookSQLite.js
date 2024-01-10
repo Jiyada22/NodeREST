@@ -25,6 +25,7 @@ db.run(`CREATE TABLE IF NOT EXISTS books (
 app.get('/books', (req, res) => {
     db.all('SELECT * FROM books', (err, rows) => {
         if (err) {
+            res.status(500).send(err);
         } else {
             res.json(rows);
         }
